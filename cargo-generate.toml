@@ -1,0 +1,11 @@
+[template]
+cargo_generate_version = ">=0.18"
+ignore = [".git", "README.md"]
+
+#[hooks]
+#pre = ["pre-script.rhai"]
+
+[placeholders.usb]
+type = "bool"
+prompt = "USB Support"
+default = false
