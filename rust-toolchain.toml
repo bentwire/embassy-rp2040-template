@@ -1,0 +1,6 @@
+[toolchain]
+channel = "beta-2023-12-17"
+components = [ "rust-src", "rustfmt", "llvm-tools" ]
+targets = [
+    "thumbv6m-none-eabi",
+]
