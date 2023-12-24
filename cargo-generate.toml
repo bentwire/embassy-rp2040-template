@@ -2,8 +2,8 @@
 cargo_generate_version = ">=0.18"
 ignore = [".git", "README.md"]
 
-#[hooks]
-#pre = ["pre-script.rhai"]
+[hooks]
+pre = ["memory.rhai"]
 
 [placeholders.usb]
 type = "bool"
