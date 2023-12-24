@@ -9,3 +9,18 @@ ignore = [".git", "README.md"]
 type = "bool"
 prompt = "USB Support"
 default = false
+
+[conditional.'usb'.placeholders.usb_logger]
+type = "bool"
+prompt = "USB Logger Support"
+default = false
+
+[placeholders.net]
+type = "bool"
+prompt = "Network Support"
+default = false
+
+[conditional.'net'.placeholders.cyw43]
+type = "bool"
+prompt = "CYW4343W WiFi/Bluetooth Support"
+default = false
