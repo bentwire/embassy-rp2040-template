@@ -20,5 +20,6 @@ MEMORY {
 }
 {%- if sto_flash != "0" %}
 __flash_size = {{sys_flash | times: 1024}};
+__storage_flash_size = {{sto_flash | times: 1024}};
 __storage_flash_offset = ORIGIN(STORAGE) - ORIGIN(BOOT2);
 {%- endif %}
