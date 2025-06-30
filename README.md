@@ -1,6 +1,20 @@
+# Embassy RP2040 template
+
 This is a WIP.  
-```
-cargo generate --path ./embassy-rp-template/
+
+```sh
+# Install rustup and probe-rs
+$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+$ curl -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh
+
+# Install utilities
+$ cargo install cargo-generate
+$ cargo install elf2uf2-rs
+
+# Get this template and generate a new project
+$ git clone https://github.com/bus710/embassy-rp2040-template.git
+$ cargo generate --path ./embassy-rp2040-template/
+
 🤷   Project Name: test-a
 🔧   Destination: test-a ...
 🔧   project-name: test-a ...
@@ -29,4 +43,18 @@ Memory Config
 🔧   Moving generated files into: `test-a`...
 💡   Initializing a fresh Git repository
 ✨   Done! New project created test-a
+
+# Build
+$ cd test-a
+$ cargo build --release
+
+# Update the .cargo/cargo.toml to select either probe-rs or elf2uf2-rs
+# Run this command - for the elf2uf2-rs, make sure the target board is in the drive mode
+$ cargo run --bin test-a --release 
 ```
+
+## To update the versions
+
+Embassy-rs libraries' version can be found in the [repo](https://github.com/embassy-rs/embassy). Each version may vary. When the [executor's version](https://github.com/embassy-rs/embassy/blob/main/embassy-executor/Cargo.toml) is 0.7.0, the other libraries can be 0.4.0. 
+
+If you see there is any error even after all the [dependencies](./Cargo.toml) got updated, the [toolchain file](./rust-toolchain.toml) can be used to point something older version of rust toolchain.
