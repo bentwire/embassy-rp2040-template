@@ -1,37 +1,36 @@
 [package]
-edition = "2021"
+edition = "2024"
 name = "{{project-name}}"
 version = "0.1.0"
 authors = ["{{authors}}"]
-resolver = "2"
 #rust-version = "stable"
 
 [dependencies]
-embassy-embedded-hal = { version = "0.3.0", git = "https://github.com/embassy-rs/embassy.git", features = ["defmt"] }
-embassy-sync = { version = "0.7.0", git = "https://github.com/embassy-rs/embassy.git", features = ["defmt"] }
-embassy-executor = { version = "0.7.0", git = "https://github.com/embassy-rs/embassy.git", features = ["arch-cortex-m", "executor-thread", "executor-interrupt", "defmt"] }
-embassy-time = { version = "0.4.0", git = "https://github.com/embassy-rs/embassy.git", features = ["defmt", "defmt-timestamp-uptime"] }
-embassy-rp = { version = "0.4.0", git = "https://github.com/embassy-rs/embassy.git", features = ["defmt", "unstable-pac", "time-driver", "critical-section-impl", "rp2040"] }
-embassy-futures = { version = "0.1.1", git = "https://github.com/embassy-rs/embassy.git" }
+embassy-embedded-hal = { version = "0.5.0", features = ["defmt"] }
+embassy-sync = { version = "0.7.2", features = ["defmt"] }
+embassy-executor = { version = "0.9.1", features = ["arch-cortex-m", "executor-thread", "executor-interrupt", "defmt"] }
+embassy-time = { version = "0.5.0", features = ["defmt", "defmt-timestamp-uptime"] }
+embassy-rp = { version = "0.9.0", features = ["defmt", "unstable-pac", "time-driver", "critical-section-impl", "rp2040"] }
+embassy-futures = { version = "0.1.2" }
 
 {%- if usb %}
-embassy-usb = { version = "0.4.0", git = "https://github.com/embassy-rs/embassy.git", features = ["defmt"] }
+embassy-usb = { version = "0.5.1", features = ["defmt"] }
 {%- if usb_logger %}
-embassy-usb-logger = { version = "0.4.0", git = "https://github.com/embassy-rs/embassy.git" }
+embassy-usb-logger = { version = "0.5.1" }
 {%- endif %}
-usbd-hid = "0.8.2"
+usbd-hid = "0.9.0"
 {%- endif %}
 
 {%- if net %}
-embassy-net = { version = "0.7.0", git = "https://github.com/embassy-rs/embassy.git", features = ["defmt", "tcp", "udp", "dhcpv4", "medium-ethernet"] }
+embassy-net = { version = "0.7.1", features = ["defmt", "tcp", "udp", "dhcpv4", "medium-ethernet"] }
 {%- if cyw43 %}
-cyw43 = { version = "0.3.0", git = "https://github.com/embassy-rs/embassy.git", features = ["defmt", "firmware-logs"] }
-cyw43-pio = { version= "0.4.0", git = "https://github.com/embassy-rs/embassy.git", features = ["defmt"] }
+cyw43 = { version = "0.6.0", features = ["defmt", "firmware-logs"] }
+cyw43-pio = { version= "0.9.0", features = ["defmt"] }
 {%- endif %}
 {%- endif %}
 
 defmt = "1.0"
-defmt-rtt = "1.0"
+defmt-rtt = "1.1"
 fixed = "1.29.0"
 fixed-macro = "1.2"
 
@@ -39,20 +38,20 @@ cortex-m = { version = "0.7.7", features = ["inline-asm"] }
 cortex-m-rt = "0.7.5"
 panic-probe = { version = "1.0", features = ["print-defmt"] }
 futures = { version = "0.3.31", default-features = false, features = ["async-await", "cfg-target-has-atomic", "unstable"] }
-heapless = "0.8"
+heapless = "0.9"
 
 
 embedded-hal-1 = { package = "embedded-hal", version = "=1.0.0" }
 embedded-hal-async = "1.0.0"
 embedded-hal-bus = { version = "0.3.0", features = ["async"] }
-embedded-io-async = { version = "0.6.1", features = ["defmt-03"] }
+embedded-io-async = { version = "0.7.0", features = ["defmt"] }
 #embedded-storage = { version = "0.3" }
 static_cell = "2"
-portable-atomic = { version = "1.11", features = ["critical-section"] }
+portable-atomic = { version = "1.13", features = ["critical-section"] }
 log = "0.4"
 pio-proc = "0.3"
 pio = "0.3.0"
-rand = { version = "0.9.1", default-features = false }
+rand = { version = "0.9.2", default-features = false }
 
 [profile.release]
 debug = 2
